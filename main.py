@@ -43,6 +43,11 @@ if file:
     new_dtype = pd.DataFrame(d1,index=[0])
     st.subheader("🔢Data types of different columns")
     st.write(new_dtype)
+
+    # Displaying duplicate rows
+    st.subheader("Duplicate Records")
+    duplicate_rec = df[df.duplicated()]
+    st.write(duplicate_rec)
     
     
     # st.subheader("📄Handeling Missing Values")
