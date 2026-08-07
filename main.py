@@ -25,12 +25,20 @@ if file:
     st.write(new_null_df)
     
     # Calculating percentages of missing value in data for particular column
-        
+    col_names = list(new_null_df.columns)
+    d = {}    
     
+    null_values = list(df.isnull().sum().astype(int))
+    for i in range(len(col_names)):
+        percent_col = ((null_values[i]/row)*100)
+        rounded_percentage = round(percent_col,4)
+        d[col_names[i]] = str(rounded_percentage)+"%"
     
+    st.subheader("Missing Values in percentage")
+    df_percent_missing = pd.DataFrame(d,index=[0])
+    st.write(df_percent_missing)
     
-    
-    # Time to Display Data types of objects
+    # Display Data types of objects
     d1 = dict(df.dtypes)
     new_dtype = pd.DataFrame(d1,index=[0])
     st.subheader("🔢Data types of different columns")
