@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import plotly as plt
+import plotly
 import streamlit as st
 import matplotlib.pyplot as plt
 
@@ -24,11 +24,18 @@ if file:
     new_null_df = pd.DataFrame(null_data,index=[0])
     st.write(new_null_df)
     
+    # Calculating percentages of missing value in data for particular column
+        
+    
+    
+    
+    
     # Time to Display Data types of objects
     d1 = dict(df.dtypes)
     new_dtype = pd.DataFrame(d1,index=[0])
     st.subheader("🔢Data types of different columns")
     st.write(new_dtype)
+    
     
     # st.subheader("📄Handeling Missing Values")
     
