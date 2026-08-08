@@ -1,8 +1,7 @@
 import pandas as pd
 import numpy as np
-import plotly
+import plotly.express as px
 import streamlit as st
-import matplotlib.pyplot as plt
 
 st.title("Smart EDA 📊")
 file = st.file_uploader("📁 Upload file to extract meaningful insights")
@@ -20,6 +19,7 @@ if file:
     
     null_data = df.isnull().sum().astype(int).to_dict()
 
+    print(null_data)
     st.subheader("📑Missing values in Data")
     new_null_df = pd.DataFrame(null_data,index=[0])
     st.write(new_null_df)
@@ -29,12 +29,13 @@ if file:
     d = {}    
     
     null_values = list(df.isnull().sum().astype(int))
+    print(null_values)
     for i in range(len(col_names)):
         percent_col = ((null_values[i]/row)*100)
         rounded_percentage = round(percent_col,4)
         d[col_names[i]] = str(rounded_percentage)+"%"
     
-    st.subheader("Missing Values in percentage")
+    st.subheader("❓Missing Values in percentage")
     df_percent_missing = pd.DataFrame(d,index=[0])
     st.write(df_percent_missing)
     
@@ -45,9 +46,18 @@ if file:
     st.write(new_dtype)
 
     # Displaying duplicate rows
-    st.subheader("Duplicate Records")
+    st.subheader("👥Duplicate Records")
     duplicate_rec = df[df.duplicated()]
     st.write(duplicate_rec)
+    
+    # Creating Bar graph for null values for better understanding.
+    st.subheader("📊Bar Graph for Null Values")
+    bar_data = pd.DataFrame({
+        "Columns":col_names,
+        "Null Values":null_values
+    })
+    bar_graph = px.bar(bar_data,x="Columns",y="Null Values")
+    st.plotly_chart(bar_graph)
     
     
     # st.subheader("📄Handeling Missing Values")
