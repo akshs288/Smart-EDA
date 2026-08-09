@@ -59,7 +59,19 @@ if file:
     bar_graph = px.bar(bar_data,x="Columns",y="Null Values")
     st.plotly_chart(bar_graph)
     
+    st.subheader("📄Handeling Missing Values")
     
-    # st.subheader("📄Handeling Missing Values")
-    
+    cola,colb = st.columns(2)
+    colc,cold = st.columns(2)
+    with cola:
+        rem_dupl = st.button("Remove Duplicates")
+
+    with colb:
+        mean_button = st.button("Fill with mean")
+
+    with colc:
+        median_button = st.button("Fill with median")
+
+    with cold:
+        mode_button = st.button("Fill Non integer Values")
 
