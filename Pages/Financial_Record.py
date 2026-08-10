@@ -3,7 +3,3 @@ import pandas as pd
 
 st.subheader("Numerical Analysis")
 
-
-
-
-
