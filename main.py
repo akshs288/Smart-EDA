@@ -6,8 +6,14 @@ import streamlit as st
 st.title("Smart EDA 📊")
 file = st.file_uploader("📁 Upload file to extract meaningful insights")
 
+
 if file:
-    df = pd.read_csv(file)
+
+    def func(fil):
+        df = pd.read_csv(fil)
+        return df
+
+    df = func(file)
     row,col = tuple(df.shape)
 
     col1,col2 = st.columns(2)
