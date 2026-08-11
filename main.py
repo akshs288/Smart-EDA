@@ -14,6 +14,9 @@ if file:
         return df
 
     df = func(file)
+    
+    st.session_state["df"]=df
+    
     row,col = tuple(df.shape)
 
     col1,col2 = st.columns(2)
